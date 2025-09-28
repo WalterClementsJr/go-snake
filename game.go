@@ -57,9 +57,9 @@ func (game *Game) move(dir Direction) {
 			}
 		} else {
 			// tail pieces move
-			// track the previous
 			loc.a, loc.b = prev.a, prev.b
 
+			// track the previous snake location
 			prev = temp
 
 			if grow && i == len(snake.location)-1 {
@@ -67,14 +67,11 @@ func (game *Game) move(dir Direction) {
 				break
 			}
 		}
-
 	}
-	log.Printf("%+v\n\n", snake.location[0])
 }
 
-// place food where the snake is not
+// TODO place food where the snake is not
 func (game *Game) placeFood() {
-	// TODO
 	game.food = []Tuple2{
 		{20, 10},
 		{25, 10},

@@ -30,13 +30,13 @@ func draw(game *Game) {
 func stateUpdate(game *Game) {
 	game.move(game.currentMotion)
 
-	if rl.IsKeyPressed(rl.KeyUp) {
+	if rl.IsKeyPressed(rl.KeyUp) && game.currentMotion != MOVE_DOWN {
 		game.currentMotion = MOVE_UP
-	} else if rl.IsKeyPressed(rl.KeyDown) {
+	} else if rl.IsKeyPressed(rl.KeyDown) && game.currentMotion != MOVE_UP {
 		game.currentMotion = MOVE_DOWN
-	} else if rl.IsKeyPressed(rl.KeyRight) {
+	} else if rl.IsKeyPressed(rl.KeyRight) && game.currentMotion != MOVE_LEFT {
 		game.currentMotion = MOVE_RIGHT
-	} else if rl.IsKeyPressed(rl.KeyLeft) {
+	} else if rl.IsKeyPressed(rl.KeyLeft) && game.currentMotion != MOVE_RIGHT {
 		game.currentMotion = MOVE_LEFT
 	}
 }

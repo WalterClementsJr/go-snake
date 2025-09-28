@@ -15,7 +15,7 @@ install:
 	@go install
 
 build:
-	go build -o ./bin/${binary_name} main.go
+	go build -o ./bin/${binary_name} .
 
 run: build
 	./bin/${binary_name}
