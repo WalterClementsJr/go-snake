@@ -20,3 +20,6 @@ build:
 run: build
 	./bin/${binary_name}
 
+test:
+	go test -v -race -coverprofile=coverage.out -coverpkg=./... ./...
+
