@@ -21,23 +21,23 @@ const (
 type Direction int
 
 const (
-	MOVE_UP Direction = iota
-	MOVE_DOWN
-	MOVE_LEFT
-	MOVE_RIGHT
+	MoveUp Direction = iota
+	MoveDown
+	MoveLeft
+	MoveRight
 )
 
 // String implement the stringer interface
 func (d Direction) String() string {
 	switch d {
-	case MOVE_UP:
-		return "MOVE_UP"
-	case MOVE_DOWN:
-		return "MOVE_DOWN"
-	case MOVE_LEFT:
-		return "MOVE_LEFT"
-	case MOVE_RIGHT:
-		return "MOVE_RIGHT"
+	case MoveUp:
+		return "MoveUp"
+	case MoveDown:
+		return "MoveDown"
+	case MoveLeft:
+		return "MoveLeft"
+	case MoveRight:
+		return "MoveRight"
 	default:
 		return fmt.Sprintf("Direction(%d)", int(d))
 	}

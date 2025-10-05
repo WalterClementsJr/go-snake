@@ -22,32 +22,32 @@ func TestSnakeMove(t *testing.T) {
 		expectedLocation  []Tuple2
 	}{
 		"expect snake continue moving 1 tile up": {
-			inputDirection:    constants.MOVE_DOWN,
-			expectedDirection: constants.MOVE_UP,
+			inputDirection:    constants.MoveDown,
+			expectedDirection: constants.MoveUp,
 			expectedLocation: []Tuple2{
 				{5, 11}, {5, 12}, {5, 13},
 			},
 		},
 
 		"expect snake move 1 tile left": {
-			inputDirection:    constants.MOVE_LEFT,
-			expectedDirection: constants.MOVE_LEFT,
+			inputDirection:    constants.MoveLeft,
+			expectedDirection: constants.MoveLeft,
 			expectedLocation: []Tuple2{
 				{4, 10}, {5, 11}, {5, 13},
 			},
 		},
 
 		"expect snake move 1 tile right": {
-			inputDirection:    constants.MOVE_RIGHT,
-			expectedDirection: constants.MOVE_RIGHT,
+			inputDirection:    constants.MoveRight,
+			expectedDirection: constants.MoveRight,
 			expectedLocation: []Tuple2{
 				{6, 10}, {5, 12}, {5, 13},
 			},
 		},
 
 		"expect snake continue 1 tile up": {
-			inputDirection:    constants.MOVE_DOWN,
-			expectedDirection: constants.MOVE_UP,
+			inputDirection:    constants.MoveDown,
+			expectedDirection: constants.MoveUp,
 			expectedLocation: []Tuple2{
 				{6, 10}, {5, 12}, {5, 13},
 			},
@@ -59,7 +59,7 @@ func TestSnakeMove(t *testing.T) {
 			game := Game{}
 			game.Init()
 			game.Snake.Location = originalLocation
-			game.CurrentMotion = constants.MOVE_UP
+			game.CurrentMotion = constants.MoveUp
 
 			game.Move(testCase.inputDirection)
 			snakeLocation := game.Snake.Location

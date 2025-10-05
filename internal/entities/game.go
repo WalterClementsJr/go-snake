@@ -11,23 +11,23 @@ type Game struct {
 func (game *Game) Move(dir constants.Direction) {
 	x, y := 0, 0
 
-	if dir == constants.MOVE_UP && game.CurrentMotion != constants.MOVE_DOWN {
-		game.CurrentMotion = constants.MOVE_UP
-	} else if dir == constants.MOVE_UP && game.CurrentMotion != constants.MOVE_UP {
-		game.CurrentMotion = constants.MOVE_DOWN
-	} else if dir == constants.MOVE_RIGHT && game.CurrentMotion != constants.MOVE_LEFT {
-		game.CurrentMotion = constants.MOVE_RIGHT
-	} else if dir == constants.MOVE_LEFT && game.CurrentMotion != constants.MOVE_RIGHT {
-		game.CurrentMotion = constants.MOVE_LEFT
+	if dir == constants.MoveUp && game.CurrentMotion != constants.MoveDown {
+		game.CurrentMotion = constants.MoveUp
+	} else if dir == constants.MoveUp && game.CurrentMotion != constants.MoveUp {
+		game.CurrentMotion = constants.MoveDown
+	} else if dir == constants.MoveRight && game.CurrentMotion != constants.MoveLeft {
+		game.CurrentMotion = constants.MoveRight
+	} else if dir == constants.MoveLeft && game.CurrentMotion != constants.MoveRight {
+		game.CurrentMotion = constants.MoveLeft
 	}
 	switch dir {
-	case constants.MOVE_UP:
+	case constants.MoveUp:
 		y = -1
-	case constants.MOVE_DOWN:
+	case constants.MoveDown:
 		y = 1
-	case constants.MOVE_LEFT:
+	case constants.MoveLeft:
 		x = -1
-	case constants.MOVE_RIGHT:
+	case constants.MoveRight:
 		x = 1
 	}
 	var prev Tuple2
@@ -81,7 +81,7 @@ func (game *Game) Init() {
 	game.Snake.init()
 	game.PlaceFood()
 
-	game.CurrentMotion = constants.MOVE_RIGHT
+	game.CurrentMotion = constants.MoveRight
 }
 
 type Snake struct {

@@ -24,13 +24,13 @@ func stateUpdate(game *entities.Game) {
 	game.Move(game.CurrentMotion)
 
 	if rl.IsKeyPressed(rl.KeyUp) {
-		game.CurrentMotion = constants.MOVE_UP
+		game.CurrentMotion = constants.MoveUp
 	} else if rl.IsKeyPressed(rl.KeyDown) {
-		game.CurrentMotion = constants.MOVE_DOWN
+		game.CurrentMotion = constants.MoveDown
 	} else if rl.IsKeyPressed(rl.KeyRight) {
-		game.CurrentMotion = constants.MOVE_RIGHT
+		game.CurrentMotion = constants.MoveRight
 	} else if rl.IsKeyPressed(rl.KeyLeft) {
-		game.CurrentMotion = constants.MOVE_LEFT
+		game.CurrentMotion = constants.MoveLeft
 	}
 }
 
