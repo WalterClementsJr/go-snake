@@ -1,51 +1,44 @@
 package main
 
-import rl "github.com/gen2brain/raylib-go/raylib"
-
-var (
-	SnakeColor = rl.Color{245, 150, 60, 99}
-	BoardColor = rl.Color{20, 20, 20, 99}
+import (
+	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/walterclementsjr/gosnakegame/internal/constants"
+	"github.com/walterclementsjr/gosnakegame/internal/entities"
 )
 
-const (
-	PixelSize = 15
-	Width     = 800
-	Height    = 500
-)
-
-func draw(game *Game) {
+func draw(game *entities.Game) {
 	rl.BeginDrawing()
 
-	rl.ClearBackground(BoardColor)
+	rl.ClearBackground(constants.BoardColor)
 
-	for _, food := range game.food {
-		rl.DrawRectangle(int32(food.a)*PixelSize, int32(food.b)*PixelSize, PixelSize, PixelSize, rl.Red)
+	for _, food := range game.Food {
+		rl.DrawRectangle(int32(food.A)*constants.PixelSize, int32(food.B)*constants.PixelSize, constants.PixelSize, constants.PixelSize, rl.Red)
 	}
-	for _, loc := range game.snake.location {
-		rl.DrawRectangle(int32(loc.a)*PixelSize, int32(loc.b)*PixelSize, PixelSize, PixelSize, SnakeColor)
+	for _, loc := range game.Snake.Location {
+		rl.DrawRectangle(int32(loc.A)*constants.PixelSize, int32(loc.B)*constants.PixelSize, constants.PixelSize, constants.PixelSize, constants.SnakeColor)
 	}
 	rl.EndDrawing()
 }
 
-func stateUpdate(game *Game) {
-	game.move(game.currentMotion)
+func stateUpdate(game *entities.Game) {
+	game.Move(game.CurrentMotion)
 
-	if rl.IsKeyPressed(rl.KeyUp) && game.currentMotion != MOVE_DOWN {
-		game.currentMotion = MOVE_UP
-	} else if rl.IsKeyPressed(rl.KeyDown) && game.currentMotion != MOVE_UP {
-		game.currentMotion = MOVE_DOWN
-	} else if rl.IsKeyPressed(rl.KeyRight) && game.currentMotion != MOVE_LEFT {
-		game.currentMotion = MOVE_RIGHT
-	} else if rl.IsKeyPressed(rl.KeyLeft) && game.currentMotion != MOVE_RIGHT {
-		game.currentMotion = MOVE_LEFT
+	if rl.IsKeyPressed(rl.KeyUp) {
+		game.CurrentMotion = constants.MOVE_UP
+	} else if rl.IsKeyPressed(rl.KeyDown) {
+		game.CurrentMotion = constants.MOVE_DOWN
+	} else if rl.IsKeyPressed(rl.KeyRight) {
+		game.CurrentMotion = constants.MOVE_RIGHT
+	} else if rl.IsKeyPressed(rl.KeyLeft) {
+		game.CurrentMotion = constants.MOVE_LEFT
 	}
 }
 
 func main() {
-	game := Game{}
-	game.init()
+	game := entities.Game{}
+	game.Init()
 
-	rl.InitWindow(Width, Height, "Snake game")
+	rl.InitWindow(constants.Width, constants.Height, "Snake game")
 	defer rl.CloseWindow()
 
 	rl.SetTargetFPS(10)
